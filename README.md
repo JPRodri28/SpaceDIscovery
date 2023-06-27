@@ -3,5 +3,5 @@
 <a>Nome = João Pedro Rodrigues</a>
 <h2>Para acessar esse jogo click no icon a baixo e faça o download:</h2>
 <div>
-    <a href="https://drive.google.com/drive/folders/1G2oRnEvVUTzlO6jxlAdEg-43d3usdCcW?usp=drive_link" alt="SpaceDiscovery" target="_blank"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)"/>
+    <a href="https://drive.google.com/drive/folders/1G2oRnEvVUTzlO6jxlAdEg-43d3usdCcW?usp=drive_link" alt="SpaceDiscovery" target="_blank"><img src=https://drive.google.com/file/d/1T4bHEpUrzaLu85fGybnWgCLmTW9txdd4/view?usp=drive_link"/>
     </div>
