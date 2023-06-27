@@ -46,3 +46,8 @@ def salvar_estrelas():
             posicao_y = str(bolinha["posicao"][1])
             legenda = bolinha["legenda"]
             arquivo.write(posicao_x + "," + posicao_y + "," + legenda + "\n")
+def calcular_distancia(ponto1, ponto2):
+    x1, y1 = ponto1
+    x2, y2 = ponto2
+    distancia = math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
+    return distancia
