@@ -105,6 +105,27 @@ while running:
                 linhas.clear()
                 with open(arquivo_estrelas, "w") as arquivo:
                     arquivo.write("")
-        pygame.display.flip()
+    for bolinha in bolinhas:
+        posicao_bola = bolinha["posicao"]
+        legenda = bolinha["legenda"]
+        pygame.draw.circle(tela, branco, posicao_bola, raio_bola)
+        posicao_legenda = (posicao_bola[0] + raio_bola + 5, posicao_bola[1] - raio_bola)
+        texto_legenda = fonte.render(legenda, True, branco)
+        tela.blit(texto_legenda, posicao_legenda)
+    
+    for linha in linhas:
+        posicao_inicial, posicao_final = linha
+        distancia_x = abs(posicao_final[0] - posicao_inicial[0])
+        distancia_y = abs(posicao_final[1] - posicao_inicial[1])
+        distancia_total = distancia_x + distancia_y
+        pygame.draw.line(tela, branco, posicao_inicial, posicao_final, 1)
+        texto_distancia = fonte.render(str(distancia_total), True, branco)
+        posicao_texto = ((posicao_inicial[0] + posicao_final[0]) // 2, (posicao_inicial[1] + posicao_final[1]) // 2)
+        tela.blit(texto_distancia, posicao_texto)
+    
+    if linha_ativa and posicao_inicial and posicao_final:
+        pygame.draw.line(tela, branco, posicao_inicial, posicao_final, 1)
+    
+    pygame.display.flip()
 
 pygame.quit()
