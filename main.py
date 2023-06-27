@@ -51,3 +51,60 @@ def calcular_distancia(ponto1, ponto2):
     x2, y2 = ponto2
     distancia = math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
     return distancia
+while running:
+    tela.blit(fundo, (0, 0))
+    texto_salvar = fonte.render("Pressione F10 para salvar", True, branco)
+    tela.blit(texto_salvar, (10, 10))
+    texto_carregar = fonte.render("Pressione F11 para carregar as estrelas", True, branco)
+    tela.blit(texto_carregar, (10, 30))
+    texto_excluir = fonte.render("Pressione F12 para excluir", True, branco)
+    tela.blit(texto_excluir, (10, 50))
+    
+    for evento in pygame.event.get():
+        if evento.type == QUIT:
+            salvar_estrelas()
+            running = False
+        elif evento.type == KEYDOWN and evento.key == K_ESCAPE:
+            salvar_estrelas()
+            running = False
+        elif evento.type == KEYDOWN and evento.key == K_F10:
+            salvar_estrelas()
+        elif evento.type == KEYDOWN and evento.key == K_F11:
+            carregar_estrelas()
+        elif evento.type == MOUSEBUTTONDOWN:
+            if evento.button == 1:
+                posicao_bola = evento.pos
+                if tela.get_rect().collidepoint(posicao_bola):
+                    item = simpledialog.askstring("Space", "Nome da Estrela:")
+                    if item == "":
+                        item = "desconhecido " + str(posicao_bola[0]) + "," + str(posicao_bola[1])
+                    bolinha = {
+                        "posicao": posicao_bola,
+                        "legenda": item
+                    }
+                    bolinhas.append(bolinha)
+                    if len(bolinhas) >= 2:
+                        posicao_anterior = bolinhas[-2]["posicao"]
+                        posicao_atual = bolinha["posicao"]
+                        linha = (posicao_anterior, posicao_atual)
+                        linhas.append(linha)
+                    if linha_ativa:
+                        linha_ativa = False
+                        posicao_inicial = None
+                        posicao_final = None
+                    else:
+                        linha_ativa = True
+                        posicao_inicial = posicao_bola
+        elif evento.type == MOUSEBUTTONUP:
+            if evento.button == 1:
+                posicao_final = evento.pos
+        elif evento.type == KEYDOWN and evento.key == K_F12: 
+            resposta = simpledialog.askstring("Space", "Tem certeza que deseja excluir tudo? (S/N):")
+            if resposta and resposta.lower() == "s":
+                bolinhas.clear()
+                linhas.clear()
+                with open(arquivo_estrelas, "w") as arquivo:
+                    arquivo.write("")
+        pygame.display.flip()
+
+pygame.quit()
