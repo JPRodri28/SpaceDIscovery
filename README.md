@@ -1,4 +1,4 @@
-<h1>SpaceDiscovery</h1>
+<h1>Space Maker</h1>
 <a>RA = 1134867</a>
 <a>Nome = João Pedro Rodrigues</a>
 <h2>Para acessar o jogo click no ícone a baixo e faça o download:</h2>
